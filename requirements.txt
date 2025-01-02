@@ -3,3 +3,4 @@ Werkzeug
 Flask-Login
 gunicorn
 Flask-SQLAlchemy
+Flask-Login
