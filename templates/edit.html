@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Edit Product</h1>
+
+  <form method="POST" action="{{ url_for('edit', product_id=product.id) }}">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      <label for="name">Product Name</label>
+      {{ form.name(class="form-control") }}
+    </div>
+
+    <div class="form-group">
+      <label for="price">Product Price</label>
+      {{ form.price(class="form-control") }}
+    </div>
+
+    <div class="form-group">
+      <label for="img">Product Image URL</label>
+      {{ form.img(class="form-control") }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+{% endblock %}

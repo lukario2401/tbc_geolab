@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome, {{ user.username }}!</h1>
+
+{% if user.role == "admin" %}
+    <p style="color:red">Role: {{ user.role }}</p>
+{% else %}
+    <p>Role: {{ user.role }}</p>
+{% endif %}
+
+<ul>
+    {% for profile in users %}
+        <li>{{ profile.name }} ({{ profile.username }})</li>
+    {% endfor %}
+</ul>
+
+<h3>Your Profile Details:</h3>
+<ul>
+    <li>Name: {{ user.name }}</li>
+    <li>Username: {{ user.username }}</li>
+    <li>Email: {{ user.email }}</li>
+    <li>Role: {{ user.role }}</li>
+    <li>Joined: {{ user.joined_date }}</li>
+</ul>
+
+<br>
+<br>
+<br>
+
+<h2>Do you want to add a new product?</h2>
+
+<button style="border:1px;padding:15px;margin:10px">
+    <a href="/add" style="text-decoration:none;color:black;">Add product</a>
+</button>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h3>Do you want Log out?</h3>
+
+<button style="border:1px;padding:15px;margin:10px">
+    <a href="/logout" style="text-decoration:none;color:black;">Log Out</a>
+</button>
+
+<br>
+<br>
+<br>
+<br>
+
+{% if current_user.role == 'admin' %}
+<div class="admin-controls">
+    <form method="POST" action="{{ url_for('drop_database') }}">
+        {{ form.hidden_tag() }}
+        {{ form.submit() }}
+    </form>
+</div>
+{% endif %}
+
+
+{% endblock %}

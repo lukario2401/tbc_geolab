@@ -1,0 +1,22 @@
+    <header>
+        <div class="logo">
+            <h1>ElectroMart</h1>
+        </div>
+        <nav>
+     <ul>
+
+            <li>
+                <a style="{% if request.endpoint == 'index' %} text-decoration: none; color: blue; {% endif %}" href="/">Home</a>
+            </li>
+            <li>
+                <a style="{% if request.endpoint == 'login' %} text-decoration: none; color: blue; {% endif %}" href="/login">Login</a>
+            </li>
+            <li>
+                <a style="{% if request.endpoint == 'register' %} text-decoration: none; color: blue; {% endif %}" href="/register">register</a>
+            </li>
+            <li>
+                <a style="{% if request.endpoint == 'profile' %} text-decoration: none; color: blue; {% endif %}" href="/profile">profile</a>
+            </li>
+        </ul>
+        </nav>
+    </header>

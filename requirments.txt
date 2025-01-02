@@ -1,0 +1,7 @@
+Flask
+ext
+Werkzeug
+Flask-Login
+models
+forms
+gunicorn
