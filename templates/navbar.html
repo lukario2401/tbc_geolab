@@ -3,19 +3,26 @@
             <h1>ElectroMart</h1>
         </div>
         <nav>
-     <ul>
-
+      <ul>
             <li>
                 <a style="{% if request.endpoint == 'index' %} text-decoration: none; color: blue; {% endif %}" href="/">Home</a>
             </li>
+
+            {% if current_user.is_authenticated %}
+                <li>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            {% else %}
+                <li>
+                    <a style="{% if request.endpoint == 'login' %} text-decoration: none; color: blue; {% endif %}" href="/login">Login</a>
+                </li>
+                <li>
+                    <a style="{% if request.endpoint == 'register' %} text-decoration: none; color: blue; {% endif %}" href="/register">Register</a>
+                </li>
+            {% endif %}
+
             <li>
-                <a style="{% if request.endpoint == 'login' %} text-decoration: none; color: blue; {% endif %}" href="/login">Login</a>
-            </li>
-            <li>
-                <a style="{% if request.endpoint == 'register' %} text-decoration: none; color: blue; {% endif %}" href="/register">register</a>
-            </li>
-            <li>
-                <a style="{% if request.endpoint == 'profile' %} text-decoration: none; color: blue; {% endif %}" href="/profile">profile</a>
+                <a style="{% if request.endpoint == 'profile' %} text-decoration: none; color: blue; {% endif %}" href="/profile">Profile</a>
             </li>
         </ul>
         </nav>
