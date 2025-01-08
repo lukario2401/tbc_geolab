@@ -27,14 +27,16 @@
 <!--                        <button type="submit" class="add-to-cart">Add to Cart</button>-->
 <!--                    </form>-->
 
-                    <form method="get" action="{{ url_for('edit', product_id=product.id) }}">
-                        <button type="submit" class="edit-product">Edit Product</button>
-                    </form>
+                            {% if current_user.role == 'admin' %}
+                                <form method="get" action="{{ url_for('edit', product_id=product.id) }}">
+                                    <button type="submit" class="edit-product">Edit Product</button>
+                                </form>
 
-                    <form method="post" action="{{ url_for('delete', product_id=product.id) }}">
-                        {{ form.hidden_tag() }}
-                        <button type="submit" class="delete-item">Delete</button>
-                    </form>
+                                <form method="post" action="{{ url_for('delete', product_id=product.id) }}">
+                                    {{ form.hidden_tag() }}
+                                    <button type="submit" class="delete-item">Delete</button>
+                                </form>
+                            {% endif %}
 
                     <button id="like_button_{{ product.id }}" onclick="likeProduct({{ product.id }})" class="like-product">Like</button>
                 </div>
